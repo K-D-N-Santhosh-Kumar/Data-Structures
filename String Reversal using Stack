@@ -1,0 +1,33 @@
+#include <stdio.h>
+#define max 100
+char stack[max];
+int top=-1,n;
+
+
+void push(char data){
+	//printf("Letter Pushing %c \n",data);
+        stack[++top]=data;    
+}
+
+char pop()
+{
+	char ch;
+	ch=stack[top--];
+	return ch;
+}
+
+int main(){
+	int i;
+	printf("Enter the Text : ");
+    //gets(str);
+    scanf("%s",stack);
+    for(i=0;stack[i]!='\0';i++)
+	{
+    	push(stack[i]);
+	}
+	for(i=i-1;i>=-1;--i)
+    printf("%c",pop());	
+}
+   	
+
+
