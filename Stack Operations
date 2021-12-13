@@ -1,0 +1,68 @@
+#include<stdio.h>
+#define MAX 5
+int stack[MAX];
+int top=-1,element;
+//Pushing into stack
+void push(int data){
+    if(top==MAX-1){
+        printf("OVER FLOW\n");
+    }
+    else{
+        stack[++top]=data;  
+    }
+}
+
+//Displaying top element of stack
+void peek(){
+   if(top==-1){
+       printf("EMPTY \n");
+   } 
+   else{
+      printf("%d is Top element\n",stack[top]);
+   }
+}
+
+//Deleting element from Stack (LIFO)
+void pop(){
+    if(top==-1){
+       printf("EMPTY \n"); 
+    }
+    else{
+        stack[top]=-1;
+        top--;
+    }
+}
+
+
+int main(){
+    int choice,data;
+    do{
+        int choice,data;
+        //Menu
+        printf("Select your Operation \n1.Push \n2.Pop \n3.Peek\n4.EXIT\n");
+        
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+            printf("Enter Data to Push :");
+            scanf("%d",&data);
+            push(data);
+            break;
+            
+            case 2:
+            pop();
+            break;
+            
+            case 3:
+            peek();
+            break;
+            
+            case 4:
+            printf("EXIT");
+            break;
+        }
+        
+    }
+    while(choice!=4);
+}
+
