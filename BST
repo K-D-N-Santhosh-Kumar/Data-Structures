@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+//Node
 struct node{
    int data;
    struct node *left;
@@ -76,7 +77,7 @@ void levelorder(Node *root){
 }
 
 int main(){
-    root=insert(root,90);
+    root=insert(root,90); //root
     insert(root,100);
     insert(root,20);
     insert(root,10);
