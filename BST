@@ -1,0 +1,114 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+   int data;
+   struct node *left;
+   struct node *right;
+   
+};
+typedef struct node Node;
+Node *root=NULL;
+
+Node *createnode(int n){
+    Node *newnode;
+    newnode=(Node*)malloc(1*sizeof(Node));
+    newnode->data=n;
+    newnode->left=NULL;
+    newnode->right=NULL;
+    return newnode;
+    
+}
+Node *insert(Node *root,int n){
+    if(root==NULL){
+        return createnode(n);
+    }
+    else{
+        if(root->data>n)
+            root->left=insert(root->left,n);
+        else
+            root->right=insert(root->right,n);
+    }
+    
+    return root;
+}
+
+
+void inorder(Node *root){
+    if(root!=NULL){
+        inorder(root->left);
+        printf("%d ",root->data);
+        inorder(root->right);
+    }
+}
+
+void postorder(Node *root){
+    if(root!=NULL){
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ",root->data);
+    }
+}
+
+void preorder(Node *root){
+    if(root!=NULL){
+        printf("%d ",root->data);
+        preorder(root->left);
+        preorder(root->right);
+        
+    }
+    
+}
+
+void levelorder(Node *root){
+    Node *arr[100];
+    int s=0,e=0;
+    arr[0]=root;
+    while(s<=e){
+        if(arr[s]->left!=NULL){
+            arr[++e]=arr[s]->left;
+        }
+        if(arr[s]->right!=NULL)
+            arr[++e]=arr[s]->right;
+        printf("%d ",arr[s]->data);
+        s++;
+        
+    }
+}
+
+int main(){
+    root=insert(root,90);
+    insert(root,100);
+    insert(root,20);
+    insert(root,10);
+    insert(root,30);
+    insert(root,50);
+    insert(root,45);
+    insert(root,93);
+    insert(root,5);
+    insert(root,40);
+    printf("Inorder : \n");
+    inorder(root);
+    printf("\nPreorder : \n");
+    preorder(root);
+    printf("\nPostorder :\n");
+    postorder(root);
+    printf("\nLevelOrder :\n");
+    levelorder(root);    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
